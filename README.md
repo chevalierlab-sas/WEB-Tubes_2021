@@ -2,7 +2,7 @@
 
 ## Tuliskan nama anggota timnya
 
-### Tim 3
+### Tim 1
 
 Anggota:
 1. 
