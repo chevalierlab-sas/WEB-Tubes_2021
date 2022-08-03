@@ -5,7 +5,7 @@
 ### Tim 9
 
 Anggota:
-1. 
+1. Ahmad Arif Aulia Sutarman - D3 RPLA - 6706213089
 2.
 
 Contoh:
