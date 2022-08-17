@@ -27,8 +27,8 @@
     <div class="navbar-center">
       <a class="btn btn-ghost normal-case text-xl font-bold">Titip <span class="text-blue-400">Baju</span></a>
     </div>
-    <!-- <div class="navbar-end mr-0 sm:mr-4">
-      <div class="dropdown dropdown-end">
+    <div class="navbar-end mr-0 sm:mr-4">
+      <!-- <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle">
           <div class="indicator">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -48,8 +48,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </div> -->
+      </div> -->
+    </div>
   </div>
 </template>
 
