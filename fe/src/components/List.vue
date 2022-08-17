@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-2 sm:grid-cols-4 grid-flow-row gap-4"></div>
-  <slot></slot>
+  <!-- <slot></slot> -->
 </template>
 
 <script>
@@ -11,4 +11,4 @@ name: "List"
 
 <style>
 
-</style>
+</style> 
