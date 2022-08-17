@@ -5,9 +5,5 @@
 ### Tim 7
 
 Anggota:
-1. 
-2.
-
-Contoh:
-1. Lucky Tri Bhakti - D3 RPLA - 6706202055
-2. Maisy Yazid Imaduddin - D3 RPLA - 6706202014
+1. Zulfa Iniko Falaq - D3 RPLA - 6706213090 
+2. Laela Anggraeni
