@@ -27,7 +27,7 @@
     <div class="navbar-center">
       <a class="btn btn-ghost normal-case text-xl font-bold">Titip <span class="text-blue-400">Baju</span></a>
     </div>
-    <div class="navbar-end mr-0 sm:mr-4">
+    <!-- <div class="navbar-end mr-0 sm:mr-4">
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle">
           <div class="indicator">
@@ -49,7 +49,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
