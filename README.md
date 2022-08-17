@@ -6,7 +6,7 @@
 
 Anggota:
 1. Yudhistira Haryatmaka Santoso - D3 RPLA - 6706213050
-2.
+2. Putri Najah Hidayani - D3 RPLA - 6706213029
 
 Contoh:
 1. Lucky Tri Bhakti - D3 RPLA - 6706202055
