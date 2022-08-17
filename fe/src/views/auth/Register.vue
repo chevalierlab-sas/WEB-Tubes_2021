@@ -5,7 +5,7 @@
         <div class="card card-bordered border-2 shadow-xl w-96 h-fit">
           <div class="card-body">
             <h1 class="card-title text-center text-2xl">Register</h1>
-            <form @submit.prevent="doRegister">
+            <form @submit.prevent="register">
               <div class="flex flex-col space-y-2">
                 <div class="form-control">
                   <label class="label">
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import AuthenticationService from '../../services/AuthenticationService';
 export default {
   name: 'Register',
   data(){
@@ -53,23 +53,14 @@ export default {
     }
   },
   methods: {
-    doRegister(){
-      const data= {
+    async register(){
+      const response = await AuthenticationService.register({
         name: this.name,
         email: this.email,
-        password: this.password,
-      }
-
-      axios.post('http://localhost:8000/register', data)
-      .then(
-        res => {
-          console.log(response);
-        }
-      ).catch(
-        err => {
-          console.log(err);
-        }
-      )
+        password: this.password
+      })
+      console.log(response.data);
+      
     }
   }
 
