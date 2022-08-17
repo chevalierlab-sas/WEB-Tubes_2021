@@ -5,7 +5,7 @@
 ### Tim 8
 
 Anggota:
-1. 
+1. Yudhistira Haryatmaka Santoso - D3 RPLA - 6706213050
 2.
 
 Contoh:
