@@ -736,7 +736,10 @@
                       "schema": {
                           "type": "object",
                           "properties": {
-                            "password": {
+                            "old_password": {
+                              "type": "string"
+                            },
+                            "new_password": {
                               "type": "string"
                             }
                           }
