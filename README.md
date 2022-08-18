@@ -5,7 +5,7 @@
 ### Tim 1
 
 Anggota:
-1. 
+1. Rama Sanjaya - D3 RPLA - 6706213021
 2.
 
 Contoh:
