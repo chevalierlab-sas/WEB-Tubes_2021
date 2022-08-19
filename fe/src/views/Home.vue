@@ -13,49 +13,12 @@
 </div>
 
   <!-- Carousel -->
-<div class="carousel w-full">
-  <div id="slide1" class="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" class="w-full" />
-    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide4" class="btn btn-circle">❮</a> 
-      <a href="#slide2" class="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide2" class="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" class="w-full" />
-    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide1" class="btn btn-circle">❮</a> 
-      <a href="#slide3" class="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide3" class="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" class="w-full" />
-    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide2" class="btn btn-circle">❮</a> 
-      <a href="#slide4" class="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide4" class="carousel-item relative w-full">
-    <img src="https://placeimg.com/800/200/arch" class="w-full" />
-    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide3" class="btn btn-circle">❮</a> 
-      <a href="#slide1" class="btn btn-circle">❯</a>
-    </div>
-  </div>
-</div>
+  <carousel></carousel>
   <!-- card -->
   <div>
     <div class="text-4xl font-bold text-primary my-4">Film Terpopuler</div>
         <app-list>
-            <movie-card></movie-card>
-            <movie-card></movie-card>
-            <movie-card></movie-card>
-            <movie-card></movie-card>
-
-            <movie-card></movie-card>
-            <movie-card></movie-card>
-            <movie-card></movie-card>
-            <movie-card></movie-card>
+            <movie-card v-for="(item, idx) in movies" :key="idx" v-bind:movieDetails='item' />
         </app-list>
   </div>
 <!-- pagination -->
@@ -67,15 +30,39 @@
 
 <script>
 import MovieCard from "../components/MovieCard.vue"
-import ListVue from '../components/List.vue';
+import List from '../components/List.vue';
 import Pagination from '../components/Pagination.vue'
-
+import { api_Key } from "../helpers/Variables";
+import Carousel from "../components/Carousel.vue";
+const url = `https://api.themoviedb.org/3/discover/movie?api_key=${api_Key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false`;
 export default{
-    name: 'Home',
-    components: {
+name: "Home",
+data() {
+    return { movies: [] };
+  },
+  // METHODS HAVE ACCESS TO DATA THROUGH THIS KEYWORD
+  methods: {
+    async fetchData() {
+      try {
+        if (!this.movies.length > 0) {
+          const res = await fetch(url);
+          const movies = await res.json();
+          this.movies = [...movies.results];
+        }
+      } catch (error) {
+        alert(error);
+      }
+    }
+  },
+  // LIFE CYCLE HOOK (CREATED)
+  created() {
+    this.fetchData();
+  },
+  // COMPONENTS
+  components: {
     MovieCard,
-    "app-list": ListVue,
-    Pagination
-},
+    "app-list": List,
+    Carousel
+}
 }
 </script>

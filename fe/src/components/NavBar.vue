@@ -29,7 +29,7 @@
             <div class="card-body">
               <span class="font-bold text-lg">8 Watchlist</span>
               <div class="card-actions">
-                <button><router-link to="/Watchlist" class="btn btn-primary btn-block">View Your Movie Watchlist </router-link></button>
+                <button><router-link to="/Watchlist" class="btn btn-primary btn-block">Watchlistku </router-link></button>
               </div>
             </div>
           </div>
@@ -55,7 +55,7 @@
             <div class="card-body">
               <span class="font-bold text-lg">8 Movie</span>
               <div class="card-actions">
-                <button><router-link to="/your-rating" class="btn btn-primary btn-block">View Your Movie Watchlist </router-link></button>
+                <button><router-link to="/your-rating" class="btn btn-primary btn-block">Rating Filmku </router-link></button>
               </div>
             </div>
           </div>

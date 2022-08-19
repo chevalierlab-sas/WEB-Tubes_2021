@@ -2,16 +2,16 @@
     <div>
 
         <div class="card w-64 bg-base-100 shadow-xl">
-  <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+  <figure><img v-bind:src='imgPath' /></figure>
   <div class="card-body">
-    <h2 class="card-title">
-      Shoes!
-      <div class="badge badge-secondary">NEW</div>
+    <h2 class="card-title text-xl">
+      {{movieDetails.title}}
+      <div class="badge badge-secondary"><small>⭐{{ movieDetails.vote_average }}/10</small></div>
     </h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <p class="text-sm">{{movieDetails.overview.substring(0,150) + " ..."}}</p>
     <div class="card-actions justify-end">
-      <div class="badge badge-outline">Fashion</div> 
-      <div class="badge badge-outline">Products</div>
+      <span class="text-sm text-primary">Tanggal Rilis : </span>
+      <div class="badge badge-outline">{{ movieDetails.release_date}}</div> 
     </div>
   </div>
 </div>
@@ -20,14 +20,34 @@
 </template>
 
 <script>
-export default{
-    name: 'MovieCard',
-    props:{
-        movie:{
-            type: Object,
-            default: ()=>{
-                return {}
-            }
-        }
+import { POSTER_PATH } from "../helpers/Variables";
+
+
+  export default{
+    name: "MovieCard",
+    data() {
+    return {};
+  },
+  computed: {
+    // WILL GENERATE THE IMAGE LINK
+    imgPath() {
+      const imgLink = `${POSTER_PATH}${this.movieDetails.poster_path}`;
+      return imgLink;
+    },
+    linkParams() {
+      const linkParam = `/movie/${this.movieDetails.id}`;
+      return linkParam;
     }
-}</script>
+  },
+  methods: {},
+  created() {
+    // this.getImg();
+  },
+  // PROPS
+  props: {
+    movieDetails: Object
+  }
+  
+  }
+  
+</script>
