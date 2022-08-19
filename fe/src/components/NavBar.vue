@@ -2,7 +2,7 @@
   <div>
     <div class="navbar bg-base-100 px-24">
         <div class="flex-1">
-    <a class="btn btn-ghost normal-case text-xl">
+    <a class="btn btn-ghost normal-case text-xl" href="/">
       <img src="../assets/logo.svg" alt="logo" class="rounded-full p-1">
       ChevaMovie</a>
   </div>
@@ -27,10 +27,9 @@
             class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
           >
             <div class="card-body">
-              <span class="font-bold text-lg">8 Items</span>
-              <span class="text-info">Subtotal: $999</span>
+              <span class="font-bold text-lg">8 Watchlist</span>
               <div class="card-actions">
-                <button class="btn btn-primary btn-block">View cart</button>
+                <button><router-link to="/Watchlist" class="btn btn-primary btn-block">View Your Movie Watchlist </router-link></button>
               </div>
             </div>
           </div>
@@ -54,16 +53,57 @@
             class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
           >
             <div class="card-body">
-              <span class="font-bold text-lg">8 Items</span>
-              <span class="text-info">Subtotal: $999</span>
+              <span class="font-bold text-lg">8 Movie</span>
               <div class="card-actions">
-                <button class="btn btn-primary btn-block">View cart</button>
+                <button><router-link to="/your-rating" class="btn btn-primary btn-block">View Your Movie Watchlist </router-link></button>
               </div>
             </div>
           </div>
         </div>
 
+<!-- login -->
+      <label for="my-modal-3" class="btn modal-button">Login</label>
 
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="my-modal-3" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative bg-secondary">
+    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    
+                    <form>
+                  <div class="flex flex-col space-y-2">
+                    <div class="form-control">
+                      <label class="label">
+                        <span class="label-text">Email</span>
+                      </label>
+                      <input type="email" 
+                      placeholder="Your email" 
+                      class="input input-bordered" 
+                      
+                      required/>
+                    </div>
+                    <div class="form-control">
+                      <label class="label">
+                        <span class="label-text">Password</span>
+                      </label>
+                      <input type="password" 
+                      placeholder="Your Password" 
+                      class="input input-bordered" 
+                      
+                      required/>
+                    </div>
+                    <button type="submit" class="btn border-none">Login</button>
+                  </div>
+                </form>
+                <div class="justify-center card-actions buttom-0">
+                  <p>
+                    Don't have an account?
+                    <router-link to="/register" class="text-slate-500">Register</router-link>
+                  </p>
+                </div>
+
+  </div>
+</div> 
 
         <!-- avatar -->
         <div class="dropdown dropdown-end">
@@ -93,24 +133,26 @@
 </template>
 
 <script>
+import Login from "../views/auth/Login.vue";
 
 export default {
-  name: "NavBar",
-  data() {
-    return {
-      isLogin: false,
-      user: {},
-    };
-  },
-  created() {},
-  methods: {
-    doLogout() {
-      // getAuth().signOut()
-      // .then(() => {
-      //   window.location.reload();
-      // })
-      // .catch((err) => alert(err.message));
+    name: "NavBar",
+    data() {
+        return {
+            isLogin: false,
+            user: {},
+        };
     },
-  },
+    created() { },
+    methods: {
+        doLogout() {
+            // getAuth().signOut()
+            // .then(() => {
+            //   window.location.reload();
+            // })
+            // .catch((err) => alert(err.message));
+        },
+    },
+    components: { Login }
 };
 </script>
