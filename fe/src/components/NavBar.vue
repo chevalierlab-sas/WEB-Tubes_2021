@@ -8,10 +8,9 @@
   </div>
 
       <div class="flex-none">
-        <p class="font-medium">Watchlist</p>
         <div class="dropdown dropdown-end">
-          <label tabindex="0" class="btn btn-ghost btn-circle">
-            
+          <label tabindex="0" class="btn btn-ghost">
+            <p class="font-medium">Watchlist</p>
             <div class="indicator">
               <lord-icon
     src="https://cdn.lordicon.com/ooflgrcu.json"
@@ -19,11 +18,10 @@
     colors="primary:#e88c30"
     state="hover-1"
     style="width:24px;height:24px">
-</lord-icon>
+        </lord-icon>
               <span class="badge badge-sm indicator-item">8</span>
             </div>    
           </label>
-          
           <div
             tabindex="0"
             class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
@@ -37,6 +35,37 @@
             </div>
           </div>
         </div>
+                
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost">
+            <p class="font-medium">Rating</p>
+            <div class="indicator">
+              <lord-icon
+    src="https://cdn.lordicon.com/mdgrhyca.json"
+    trigger="morph"
+    colors="primary:#e8b730,secondary:#e88c30"
+    style="width:32px;height:32px">
+              </lord-icon>
+              <span class="badge badge-sm indicator-item">8</span>
+            </div>    
+          </label>
+          <div
+            tabindex="0"
+            class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
+          >
+            <div class="card-body">
+              <span class="font-bold text-lg">8 Items</span>
+              <span class="text-info">Subtotal: $999</span>
+              <div class="card-actions">
+                <button class="btn btn-primary btn-block">View cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- avatar -->
         <div class="dropdown dropdown-end">
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
@@ -58,6 +87,7 @@
           </ul>
         </div>
       </div>
+      
     </div>
   </div>
 </template>
