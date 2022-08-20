@@ -1,8 +1,9 @@
 <template>
-    <div>
-
+    <div class="cursor-pointer">
         <div class="card w-64 bg-base-100 shadow-xl">
-  <figure><img v-bind:src='imgPath' /></figure>
+  <router-link v-bind:to="linkParams">
+  <figure><img v-bind:src='imgPath'/></figure>
+  </router-link>
   <div class="card-body">
     <h2 class="card-title text-xl">
       {{movieDetails.title}}

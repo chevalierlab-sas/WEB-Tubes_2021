@@ -25,6 +25,12 @@ const routes = [
                 component: () => import('../views/YourRating.vue'),
 
             },
+            {
+                path: '/movie/:id',
+                name: 'Movie Detail',
+                meta: { requiresAuth: false },
+                component: () => import('../views/MovieDetail.vue'),
+            }
         ]
     },
     {
