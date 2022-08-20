@@ -16,7 +16,7 @@
   <carousel></carousel>
   <!-- card -->
   <div>
-    <div class="text-4xl font-bold text-primary my-4">Film Terpopuler</div>
+    <div class="text-4xl font-bold text-primary my-4">Film Populer</div>
         <app-list>
             <movie-card v-for="(item, idx) in movies" :key="idx" v-bind:movieDetails='item' />
         </app-list>
