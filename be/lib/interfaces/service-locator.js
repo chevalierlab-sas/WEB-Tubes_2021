@@ -1,8 +1,10 @@
 'use strict';
 
-// const JwtAccessTokenManager = require('./security/JwtAccessTokenManager');
+const JwtAccessTokenManager = require('../infrastructure/security/JwtAccessTokenManager');
 const CategorySerializer = require('./serializers/CategorySerializer');
 const CategoryRepository = require('../infrastructure/repositories/CategoryRepository')
+const UserSerializer = require('./serializers/UserSerializer');
+const UserRepository = require('../infrastructure/repositories/UserRepository')
 
 function buildBeans() {
 
@@ -10,11 +12,11 @@ function buildBeans() {
     * Default implementations
     */
     const beans = {
-        // userRepository: new UserRepositorySQLite(),
-        // accessTokenManager: new JwtAccessTokenManager(),
-        // userSerializer: new UserSerializer(),
+        accessTokenManager: new JwtAccessTokenManager(),
         categoryRepository: new CategoryRepository(),
         categorySerializer: new CategorySerializer(),
+        userSerializer: new UserSerializer(),
+        userRepository: new UserRepository(),
     };
 
     /*

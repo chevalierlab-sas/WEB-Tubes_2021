@@ -16,7 +16,6 @@ app.use(express.urlencoded({ extended: true }))
 // for parsing multipart/form-data
 app.use(multer().array())
 app.use(cookieParser())
-// app.use(express.static(path.join(__dirname, 'public')))
 
 // route version
 app.use('/api/', require('./routes/index'))

@@ -1,0 +1,56 @@
+'use strict';
+
+const UserRepository = require('../../domain/UserRepository')
+const Model = require('../database/orm/sequilize/models/index')
+const User = require('../../domain/User')
+
+module.exports = class extends UserRepository {
+    constructor() {
+        super();
+        this.model = Model.User;
+    }
+
+    async persist(userEntity) {
+        const { name, username, password } = userEntity;
+        const seqUser = await this.model.create({ name, username, password });
+        await seqUser.save();
+
+        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
+    }
+
+    // async merge(userEntity) {
+    //     const seqUser = await this.model.findByPk(userEntity.id);
+
+    //     if (!seqUser) return false;
+
+    //     const { firstName, lastName, email, password } = userEntity;
+    //     await seqUser.update({ firstName, lastName, email, password });
+
+    //     return new User(seqUser.id, seqUser.firstName, seqUser.lastName, seqUser.email, seqUser.password);
+    // }
+
+    // async remove(userId) {
+    //     const seqUser = await this.model.findByPk(userId);
+    //     if (seqUser) {
+    //     return seqUser.destroy();
+    //     }
+    //     return false;
+    // }
+
+    // async get(userId) {
+    //     const seqUser = await this.model.findByPk(userId);
+    //     return new User(seqUser.id, seqUser.firstName, seqUser.lastName, seqUser.email, seqUser.password);
+    // }
+
+    async getByUsername(username) {
+        const seqUser = await this.model.findOne({ where: { username: username } });
+        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
+    }
+
+    // async find() {
+    //     const seqUsers = await this.model.findAll();
+    //     return seqUsers.map((seqUser) => {
+    //     return new User(seqUser.id, seqUser.firstName, seqUser.lastName, seqUser.email, seqUser.password);
+    //     });
+    // }
+};
