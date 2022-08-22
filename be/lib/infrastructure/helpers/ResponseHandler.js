@@ -18,7 +18,7 @@ exports.error = (res, payload = {}) => {
 
     // if (payload.code) code = payload.code
     if (payload.message) response.message = payload.message
-    if (payload.error) response.error = payload.error
+    if (payload.errors) response.errors = payload.errors
 
     return res.status(code).json(response)
 }

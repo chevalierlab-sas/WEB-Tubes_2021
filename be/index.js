@@ -13,8 +13,6 @@ const bootstrap = require('./lib/infrastructure/config/bootstrap')
 
 bootstrap.init()
 
-
-
 /**
  * Get port from environment and store in Express.
  */
