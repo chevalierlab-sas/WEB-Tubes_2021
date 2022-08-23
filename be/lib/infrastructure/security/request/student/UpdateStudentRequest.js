@@ -1,6 +1,7 @@
 const { checkSchema }  = require('express-validator')
 const CheckValidation = require('../../CheckValidation')
 const StudentModel = require('../../../database/orm/sequilize/models/Student')
+const { Op } = require('sequelize')
 
 module.exports = [
     checkSchema({
@@ -37,7 +38,9 @@ module.exports = [
                         col: 'id',
                         where: {
                             email: value,
-                            id: req.params.studentId
+                            id: {
+                                [Op.not]: req.params.studentId
+                            },
                         }
                     })
 
