@@ -2,19 +2,19 @@
 
 module.exports = class {
 
-    persist(domainCategory) {
+    persist(domainInventory) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    merge(domainCategory) {
+    merge(domainInventory) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    remove(categoryId) {
+    remove(inventoryId) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    get(categoryId) {
+    get(inventoryId) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
