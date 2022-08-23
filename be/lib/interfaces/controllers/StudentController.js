@@ -29,12 +29,13 @@ module.exports = {
 
         // Treatment
         const student = await CreateStudent(fullname, email, phone_number, address, serviceLocator);
+        const data = serviceLocator.studentSerializer.serialize(student)
 
         // Output
         return responseHandler.success(res, {
             code: 201,
             message: "Success create student",
-            data: student
+            data: data
         })
     },
 
@@ -47,11 +48,12 @@ module.exports = {
         if (!student) return responseHandler.error404(res, {
             message: "student not found"
         })
+        const data = serviceLocator.studentSerializer.serialize(student)
 
         // Output
         return responseHandler.success(res, {
             message: "Success get student",
-            data: student
+            data: data
         })
     },
 
@@ -65,11 +67,12 @@ module.exports = {
         if (!student) return responseHandler.error404(res, {
             message: "student not found"
         })
+        const data = serviceLocator.studentSerializer.serialize(student)
 
         // Output
         return responseHandler.success(res, {
             message: "Success update student",
-            data: student
+            data: data
         })
     },
 

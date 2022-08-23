@@ -29,12 +29,13 @@ module.exports = {
 
         // Treatment
         const category = await CreateCategory(name, serviceLocator);
+        const data = serviceLocator.categorySerializer.serialize(category)
 
         // Output
         return responseHandler.success(res, {
             code: 201,
             message: "Success create category",
-            data: category
+            data: data
         })
     },
 
@@ -47,11 +48,12 @@ module.exports = {
         if (!category) return responseHandler.error404(res, {
             message: "category not found"
         })
+        const data = serviceLocator.categorySerializer.serialize(category)
 
         // Output
         return responseHandler.success(res, {
             message: "Success get category",
-            data: category
+            data: data
         })
     },
 
@@ -65,11 +67,12 @@ module.exports = {
         if (!category) return responseHandler.error404(res, {
             message: "category not found"
         })
+        const data = serviceLocator.categorySerializer.serialize(category)
 
         // Output
         return responseHandler.success(res, {
             message: "Success update category",
-            data: category
+            data: data
         })
     },
 

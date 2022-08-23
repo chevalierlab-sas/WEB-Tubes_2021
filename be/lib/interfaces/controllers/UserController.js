@@ -3,10 +3,24 @@
 const serviceLocator = require('../service-locator');
 const responseHandler = require('../../infrastructure/helpers/ResponseHandler')
 const CreateUser = require('../../application/use_cases/user/CreateUser');
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const ListUsers = require('../../application/use_cases/user/ListUser');
+const GetUser = require('../../application/use_cases/user/GetUser');
+const UpdatePasswordUser = require('../../application/use_cases/user/UpdatePasswordUser');
 
 module.exports = {
+
+    async listUsers() {
+
+        // Treatment
+        const users = await ListUsers(serviceLocator);
+        const data = users.map(serviceLocator.userSerializer.serialize)
+
+        // Output
+        return responseHandler.success(res, {
+            message: "Success get all user",
+            data: data
+        })
+    },
 
     async createUser(req, res) {
 
@@ -14,50 +28,90 @@ module.exports = {
         const { name, username, password } = req.body;
 
         // Treatment
-        const passwordBcrypt = await bcrypt.hash(password, bcrypt.genSaltSync())
-        const user = await CreateUser(name, username, passwordBcrypt, serviceLocator);
+        const user = await CreateUser(name, username, password, serviceLocator);
+        const data = serviceLocator.userSerializer.serialize(user)
 
         return responseHandler.success(res, {
             code: 201,
             message: "Success create user",
-            data: serviceLocator.userSerializer.serialize(user)
+            data: data
         })
     },
 
-    // async findUsers() {
+    async getUser(request) {
 
-    //     // Treatment
-    //     const users = await ListUsers(serviceLocator);
+        // Input
+        const userId = request.params.id;
 
-    //     // Output
-    //     return users.map(serviceLocator.userSerializer.serialize)
-    // },
+        // Treatment
+        const user = await GetUser(userId, serviceLocator);
 
-    // async getUser(request) {
+        // Output
+        if (!user) return responseHandler.error404(res, {
+            message: "user not found"
+        })
+        const data = serviceLocator.userSerializer.serialize(user)
 
-    //     // Input
-    //     const userId = request.params.id;
+        return responseHandler.success(res, {
+            message: "Success get user",
+            data: data
+        })
+    },
 
-    //     // Treatment
-    //     const user = await GetUser(userId, serviceLocator);
+    async updateUser(req, res) {
+        // input
+        const userId = req.params.userId
+        const { name, username } = req.body
 
-    //     // Output
-    //     if (!user) {
-    //     return Boom.notFound();
-    //     }
-    //     return serviceLocator.userSerializer.serialize(user);
-    // },
+        // Treatment
+        const user = await UpdateUser(userId, name, username, serviceLocator);
+        if (!user) return responseHandler.error404(res, {
+            message: "user not found"
+        })
+        const data = serviceLocator.userSerializer.serialize(user)
 
-    // async deleteUser(request, h) {
+        // Output
+        return responseHandler.success(res, {
+            message: "Success update user",
+            data: data
+        })
+    },
 
-    //     // Input
-    //     const userId = request.params.id;
+    async updatePasswordUser(req, res) {
+        // input
+        const userId = req.params.userId
+        const { password } = req.body
 
-    //     // Treatment
-    //     await DeleteUser(userId, serviceLocator);
+        // Treatment
+        const user = await UpdatePasswordUser(userId, password, serviceLocator);
+        if (!user) return responseHandler.error404(res, {
+            message: "user not found"
+        })
+        const data = serviceLocator.userSerializer.serialize(user)
 
-    //     // Output
-    //     return h.response().code(204);
-    // },
+        // Output
+        return responseHandler.success(res, {
+            message: "Success update password user",
+            data: data
+        })
+    },
+    
+
+    async deleteUser(request, h) {
+
+        // Input
+        const userId = request.params.id;
+
+        // Treatment
+        const user = await DeleteUser(userId, serviceLocator);
+        if (!user) return responseHandler.error404(res, {
+            message: "user not found"
+        })
+
+        // Output
+        return responseHandler.success(res, {
+            message: "Success delete user"
+        })
+    },
 
 };
