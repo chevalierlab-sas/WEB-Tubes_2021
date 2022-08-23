@@ -1,6 +1,7 @@
 const { checkSchema }  = require('express-validator')
 const CheckValidation = require('../../CheckValidation')
 const UserModel = require('../../../database/orm/sequilize/models/User')
+const { Op } = require('sequelize')
 
 module.exports = [
     checkSchema({

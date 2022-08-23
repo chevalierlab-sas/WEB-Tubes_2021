@@ -11,7 +11,7 @@ router.get('/', UserController.listUsers)
 router.post('/', CreateUserRequest, UserController.createUser)
 router.get('/:userId', UserController.getUser)
 router.put('/:userId', UpdateUserRequest, UserController.updateUser)
-router.delete('/:userId', UpdatePasswordUserRequest, UserController.deleteUser)
-router.put('/:userId/password', UserController.updatePasswordUser)
+router.delete('/:userId', UserController.deleteUser)
+router.put('/:userId/password', UpdatePasswordUserRequest, UserController.updatePasswordUser)
 
 module.exports = router

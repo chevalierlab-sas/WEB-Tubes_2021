@@ -50,6 +50,7 @@ module.exports = class extends UserRepository {
 
     async get(userId) {
         const seqUser = await this.model.findByPk(userId);
+        if (!seqUser) return false;
         return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
     }
 

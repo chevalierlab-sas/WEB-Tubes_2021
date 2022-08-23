@@ -5,11 +5,13 @@ const responseHandler = require('../../infrastructure/helpers/ResponseHandler')
 const CreateUser = require('../../application/use_cases/user/CreateUser');
 const ListUsers = require('../../application/use_cases/user/ListUser');
 const GetUser = require('../../application/use_cases/user/GetUser');
+const UpdateUser = require('../../application/use_cases/user/UpdateUser');
+const DeleteUser = require('../../application/use_cases/user/DeleteUser');
 const UpdatePasswordUser = require('../../application/use_cases/user/UpdatePasswordUser');
 
 module.exports = {
 
-    async listUsers() {
+    async listUsers(req, res) {
 
         // Treatment
         const users = await ListUsers(serviceLocator);
@@ -38,10 +40,10 @@ module.exports = {
         })
     },
 
-    async getUser(request) {
+    async getUser(req, res) {
 
         // Input
-        const userId = request.params.id;
+        const userId = req.params.userId;
 
         // Treatment
         const user = await GetUser(userId, serviceLocator);
@@ -97,10 +99,10 @@ module.exports = {
     },
     
 
-    async deleteUser(request, h) {
+    async deleteUser(req, res) {
 
         // Input
-        const userId = request.params.id;
+        const userId = req.params.userId;
 
         // Treatment
         const user = await DeleteUser(userId, serviceLocator);

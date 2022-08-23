@@ -40,7 +40,6 @@ module.exports = class extends StudentRepository {
 
     async get(studentId) {
         const seqStudent = await this.model.findByPk(studentId);
-        console.log(!seqStudent ? "tidak ada" : "ada");
         if (!seqStudent) return false;
         return new Student(seqStudent.id, seqStudent.fullname, seqStudent.email, seqStudent.phone_number, seqStudent.address);
     }
