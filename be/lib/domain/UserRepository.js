@@ -10,6 +10,10 @@ module.exports = class {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
+    updatePassword(userEntity) {
+        throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+    }
+
     remove(userId) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }

@@ -18,39 +18,50 @@ module.exports = class extends UserRepository {
         return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
     }
 
-    // async merge(userEntity) {
-    //     const seqUser = await this.model.findByPk(userEntity.id);
+    async merge(userEntity) {
+        const seqUser = await this.model.findByPk(userEntity.id);
 
-    //     if (!seqUser) return false;
+        if (!seqUser) return false;
 
-    //     const { firstName, lastName, email, password } = userEntity;
-    //     await seqUser.update({ firstName, lastName, email, password });
+        const { name, username } = userEntity;
+        await seqUser.update({ name, username });
 
-    //     return new User(seqUser.id, seqUser.firstName, seqUser.lastName, seqUser.email, seqUser.password);
-    // }
+        return new User(seqUser.id, seqUser.name, seqUser.username);
+    }
 
-    // async remove(userId) {
-    //     const seqUser = await this.model.findByPk(userId);
-    //     if (seqUser) {
-    //     return seqUser.destroy();
-    //     }
-    //     return false;
-    // }
+    async updatePassword(userEntity) {
+        const seqUser = await this.model.findByPk(userEntity.id);
 
-    // async get(userId) {
-    //     const seqUser = await this.model.findByPk(userId);
-    //     return new User(seqUser.id, seqUser.firstName, seqUser.lastName, seqUser.email, seqUser.password);
-    // }
+        if (!seqUser) return false;
+
+        const { password } = userEntity;
+        await seqUser.update({ password });
+
+        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
+    }
+
+    async remove(userId) {
+        const seqUser = await this.model.findByPk(userId);
+        if (seqUser) {
+        return seqUser.destroy();
+        }
+        return false;
+    }
+
+    async get(userId) {
+        const seqUser = await this.model.findByPk(userId);
+        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
+    }
 
     async getByUsername(username) {
         const seqUser = await this.model.findOne({ where: { username: username } });
         return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
     }
 
-    // async find() {
-    //     const seqUsers = await this.model.findAll();
-    //     return seqUsers.map((seqUser) => {
-    //     return new User(seqUser.id, seqUser.firstName, seqUser.lastName, seqUser.email, seqUser.password);
-    //     });
-    // }
+    async find() {
+        const seqUsers = await this.model.findAll();
+        return seqUsers.map((seqUser) => {
+        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
+        });
+    }
 };
