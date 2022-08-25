@@ -127,12 +127,16 @@ app.post(`/signup`, async (req, res) => {
 
 async function authenticateUserMiddleware(req, res, next) {
   try {
-    let token = req.headers["authorization"].split(" ")[1];
-    let decoded = jwt.verify(token, process.env.SECRET);
-    req.user = decoded;
-    next();
+    if (req.headers["authorization"]) {
+      let token = req.headers["authorization"].split(" ")[1];
+      let decoded = jwt.verify(token, process.env.SECRET);
+      req.user = decoded;
+      next();
+    } else {
+      throw Error("'authorization' header not provided");
+    }
   } catch (error) {
-    res.status(401).json({ msg: "Authentication failed: " + error.message });
+    res.status(401).json("Authentication failed: " + error.message);
   }
 }
 
@@ -147,18 +151,14 @@ app.post("/signin", async (req, res) => {
       token = jwt.sign(
         { id: user.id, email: user.email, nim: user.nim },
         process.env.SECRET,
-        { expiresIn: "7d" }
+        { expiresIn: "2d" }
       );
       res.status(200).json({ token: token });
     } else {
-      res
-        .status(401)
-        .json({ error: "Sign in failed: Incorrect email or password" });
+      res.status(401).json("Sign in failed: Incorrect email or password");
     }
   } else {
-    res
-      .status(401)
-      .json({ error: "Sign in failed: Incorrect email or password" });
+    res.status(401).json("Sign in failed: Incorrect email or password");
   }
 });
 
@@ -179,7 +179,7 @@ app.get(
     if (user != null) {
       delete user.password;
       res.json(user);
-    } else res.status(400).json({ msg: "Email not registered" });
+    } else res.status(400).json("Email not registered");
   }
 );
 
@@ -198,7 +198,7 @@ app.get(
       delete user.password;
       res.json(user);
     } catch (error) {
-      res.status(404).json({ msg: "Error: " + error.message });
+      res.status(404).send(error.message);
     }
   }
 );
@@ -301,6 +301,7 @@ const Laporan = object({
   jenis: enums(["Pengaduan", "Aspirasi"]),
   judul: string(),
   laporan: string(),
+  bukti: string(),
   idPelapor: integer(),
 });
 
@@ -310,11 +311,12 @@ app.post(
   async (req, res, next) => authenticateUserMiddleware(req, res, next),
   async (req, res) => {
     const { id } = req.user;
-    const { jenis, judul, laporan } = req.body;
+    const { jenis, judul, laporan, bukti } = req.body;
     let data = {
       jenis,
       judul,
       laporan,
+      bukti,
     };
 
     try {
@@ -362,7 +364,7 @@ app.post(
   async (req, res, next) => authenticateUserMiddleware(req, res, next),
   async (req, res) => {
     const { id } = req.user;
-    let { jenis, judul, laporan } = req.body;
+    let { jenis, judul, laporan, bukti } = req.body;
     const postId = req.body.id;
     try {
       const unchangedPost = await prisma.laporan.findUnique({
@@ -370,6 +372,10 @@ app.post(
           id: parseInt(postId),
         },
       });
+
+      if (unchangedPost == null) {
+        throw Error("Laporan not found");
+      }
 
       if (unchangedPost.idPelapor != id) {
         throw Error("Laporan not owned by requester");
@@ -379,12 +385,14 @@ app.post(
         jenis: unchangedPost.jenis,
         judul: unchangedPost.judul,
         laporan: unchangedPost.laporan,
+        bukti: unchangedPost.bukti,
       };
 
       const postData = {
         jenis: (jenis ??= unchangedPost.jenis),
         judul: (judul ??= unchangedPost.judul),
         laporan: (laporan ??= unchangedPost.laporan),
+        bukti: (bukti ??= unchangedPost.bukti),
       };
 
       if (unchangedPostData.toString() == postData.toString()) {
