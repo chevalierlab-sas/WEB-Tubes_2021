@@ -24,10 +24,10 @@
           </div>
           <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
             <div class="px-6">
-              <img alt="..." class="shadow-lg rounded-full mx-auto max-w-120-px" />
+              <img src="../assets/Arif.png" class="shadow-lg rounded-full mx-auto max-w-120-px" />
               <div class="pt-6 text-center">
                 <h5 class="text-xl font-bold">Ahmad Arif Aulia Sutarman</h5>
-                <p class="mt-1 text-sm text-blueGray-400 uppercase font-semibold">>Web Back-End Developer</p>
+                <p class="mt-1 text-sm text-blueGray-400 uppercase font-semibold">Web Back-End Developer</p>
               </div>
             </div>
           </div>

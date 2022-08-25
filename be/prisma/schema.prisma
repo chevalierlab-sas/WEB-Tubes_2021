@@ -30,6 +30,7 @@ model Laporan {
   jenis     String
   judul     String @db.Text
   laporan   String @db.Text
+  bukti     String @db.Text
   pelapor   User   @relation("Laporan Dikirim", fields: [idPelapor], references: [id])
   idPelapor Int
 }
