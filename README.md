@@ -11,7 +11,3 @@ Anggota:
 Contoh:
 1. Lucky Tri Bhakti - D3 RPLA - 6706202055
 2. Maisy Yazid Imaduddin - D3 RPLA - 6706202014
-
-[Login Tutorial](https://www.weblearningblog.com/nodejs/simple-login-and-registration-with-expressjs-sequelize-bcrypt-and-jwt/)
-
-[Prisma Query Builder](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases)

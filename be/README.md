@@ -8,3 +8,9 @@
 6. Run `npx prisma generate`
 # Usage
 Run `npm run dev` (supports hot reloading).
+
+# Resources
+
+[Login Tutorial](https://www.weblearningblog.com/nodejs/simple-login-and-registration-with-expressjs-sequelize-bcrypt-and-jwt/)
+
+[Prisma Query Builder](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases)
