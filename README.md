@@ -6,7 +6,7 @@
 
 Anggota:
 1. 
-2.
+2. Muhammad Raihan - D3 RPLA - 6706213033
 
 Contoh:
 1. Lucky Tri Bhakti - D3 RPLA - 6706202055
