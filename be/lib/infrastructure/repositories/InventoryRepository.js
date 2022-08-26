@@ -42,13 +42,42 @@ module.exports = class extends InventoryRepository {
     
         const { 
             category_id, deposit_name, deposit_student_id, 
-            deposit_admin, deposit_time, item_name, description,
-            status, take_name, take_student_id, take_time, take_admin
+            deposit_time, item_name, description,
+            status, take_name, take_student_id, take_time
         } = inventoryEntity;
 
         await seqInventory.update({ 
             category_id, deposit_name, deposit_student_id, 
-            deposit_admin, deposit_time, item_name, description,
+            deposit_time, item_name, description,
+            status, take_name, take_student_id, take_time
+        });
+
+        return new Inventory(
+            seqInventory.id, seqInventory.category_id,
+            seqInventory.deposit_name, seqInventory.deposit_student_id,
+            seqInventory.deposit_admin, seqInventory.deposit_time,
+            seqInventory.item_name, seqInventory.description,
+            seqInventory.status, seqInventory.take_name,
+            seqInventory.take_student_id, seqInventory.take_time,
+            seqInventory.take_admin
+        );
+    }
+
+    async take(inventoryEntity) {
+        const seqInventory = await this.model.findOne({
+            where: {
+                id: inventoryEntity.id,
+                status: 'deposit'
+            }
+        });
+    
+        if (!seqInventory) return false;
+    
+        const { 
+            status, take_name, take_student_id, take_time,take_admin
+        } = inventoryEntity;
+
+        await seqInventory.update({ 
             status, take_name, take_student_id, take_time, take_admin
         });
 

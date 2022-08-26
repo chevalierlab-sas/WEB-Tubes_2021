@@ -7,6 +7,8 @@ const UserSerializer = require('./serializers/UserSerializer');
 const UserRepository = require('../infrastructure/repositories/UserRepository')
 const StudentSerializer = require('./serializers/StudentSerializer');
 const StudentRepository = require('../infrastructure/repositories/StudentRepository')
+const InventorySerializer = require('./serializers/InventorySerializer');
+const InventoryRepository = require('../infrastructure/repositories/InventoryRepository')
 
 function buildBeans() {
 
@@ -21,6 +23,8 @@ function buildBeans() {
         userRepository: new UserRepository(),
         studentSerializer: new StudentSerializer(),
         studentRepository: new StudentRepository(),
+        inventorySerializer: new InventorySerializer(),
+        inventoryRepository: new InventoryRepository(),
     };
 
     /*

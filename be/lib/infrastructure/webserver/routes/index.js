@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const auth = require('../../../application/use_cases/auth/VerifyAccessToken')
 
+router.use('/inventory', auth, require('./inventory'))
 router.use('/category', auth, require('./category'))
 router.use('/student', auth, require('./student'))
 router.use('/user', auth, require('./user'))

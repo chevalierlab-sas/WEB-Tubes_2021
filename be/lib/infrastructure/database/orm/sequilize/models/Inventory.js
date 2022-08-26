@@ -1,4 +1,6 @@
 const {sequelize, DataTypes} = require('../sequilize')
+const dateTime = require('node-datetime')
+
 module.exports = sequelize.define('inventories', {
         // attributes
         id: {
@@ -27,8 +29,12 @@ module.exports = sequelize.define('inventories', {
             allowNull: false
         },
         deposit_time: {
-            type: DataTypes.TIME,
-            allowNull: false
+            type: DataTypes.DATE,
+            allowNull: false,
+            get: function() {
+                let value = dateTime.create(this.getDataValue('deposit_time')).format('Y-m-d H:M:S')
+                return value
+            }
         },
         item_name: {
             type: DataTypes.STRING(250),
@@ -52,8 +58,12 @@ module.exports = sequelize.define('inventories', {
             allowNull: true,
         },
         take_time: {
-            type: DataTypes.TIME,
+            type: DataTypes.DATE,
             allowNull: true,
+            get: function() {
+                let value = dateTime.create(this.getDataValue('take_time')).format('Y-m-d H:M:S')
+                return value
+            }
         },
         take_admin: {
             type: DataTypes.INTEGER,

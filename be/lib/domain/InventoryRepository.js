@@ -21,4 +21,8 @@ module.exports = class {
     find() {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
+
+    take(domainInventory) {
+        throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+    }
 };
