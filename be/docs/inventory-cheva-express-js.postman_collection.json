@@ -424,7 +424,7 @@
 							"variable": [
 								{
 									"key": "categoryId",
-									"value": "1"
+									"value": "6"
 								}
 							]
 						}
@@ -715,7 +715,7 @@
 							"variable": [
 								{
 									"key": "studentId",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -1106,7 +1106,7 @@
 								},
 								{
 									"key": "username",
-									"value": "zulfa",
+									"value": "zulfass",
 									"type": "text"
 								},
 								{
@@ -1223,7 +1223,7 @@
 							"variable": [
 								{
 									"key": "userId",
-									"value": "1"
+									"value": "11"
 								}
 							]
 						}
@@ -1308,7 +1308,7 @@
 								},
 								{
 									"key": "username",
-									"value": "budi",
+									"value": "budis",
 									"type": "text"
 								}
 							]
@@ -1326,7 +1326,7 @@
 							"variable": [
 								{
 									"key": "userId",
-									"value": null
+									"value": "11"
 								}
 							]
 						}
@@ -1430,7 +1430,7 @@
 							"variable": [
 								{
 									"key": "userId",
-									"value": "1"
+									"value": "12"
 								}
 							]
 						}
@@ -1529,7 +1529,7 @@
 							"variable": [
 								{
 									"key": "userId",
-									"value": "1"
+									"value": "11"
 								}
 							]
 						}
@@ -1710,7 +1710,7 @@
 								},
 								{
 									"key": "deposit_name",
-									"value": "",
+									"value": "asdasdasdasd",
 									"description": "dibutuhkan jika deposit_student_id tidak diisi",
 									"type": "text",
 									"disabled": true
@@ -1722,7 +1722,7 @@
 								},
 								{
 									"key": "description",
-									"value": "",
+									"value": "coba",
 									"type": "text"
 								}
 							]
@@ -1914,7 +1914,7 @@
 							"variable": [
 								{
 									"key": "inventoryId",
-									"value": "1"
+									"value": "3"
 								}
 							]
 						}
@@ -2012,7 +2012,7 @@
 								},
 								{
 									"key": "deposit_time",
-									"value": "2022/08/28 16:30:30",
+									"value": "2022-08-28 23:30:30",
 									"type": "text"
 								},
 								{
@@ -2032,7 +2032,7 @@
 									"type": "text"
 								},
 								{
-									"key": "take_mahasiswa_id",
+									"key": "take_student_id",
 									"value": "1",
 									"description": "pilih salah satu take_mahasiswa_id atau take_name yang diisi",
 									"type": "text"
@@ -2046,7 +2046,7 @@
 								},
 								{
 									"key": "take_time",
-									"value": "2022/08/28 16:30:30",
+									"value": "2022-08-28 16:30:31",
 									"type": "text"
 								}
 							]
@@ -2523,7 +2523,7 @@
 							"variable": [
 								{
 									"key": "inventoryId",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -2602,7 +2602,7 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "take_mahasiswa_id",
+									"key": "take_student_id",
 									"value": "1",
 									"description": "pilih salah satu take_mahasiswa_id atau take_name yang diisi",
 									"type": "text"
@@ -2630,7 +2630,7 @@
 							"variable": [
 								{
 									"key": "inventoryId",
-									"value": "1"
+									"value": "3"
 								}
 							]
 						}
@@ -2759,6 +2759,50 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "budis",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "zulfa",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
