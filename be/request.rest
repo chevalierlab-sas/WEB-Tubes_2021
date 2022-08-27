@@ -1,0 +1,31 @@
+//ini pake extention rest client pengganti postman
+GET http://localhost:3000/users
+Authorization: Bearer
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Jena",
+    "email": "email@gmail.com",
+    "password": "123456",
+    "confPassword": "123456"
+}
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email": "email@email.com",
+    "password": "123456"
+}
+
+###
+GET http://localhost:3000/token
+
+###
+
+DELETE http://localhost:3000/logout

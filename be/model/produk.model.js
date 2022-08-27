@@ -11,18 +11,6 @@ module.exports = sequelize.define("produk", {
     unique: false,
     allowNull: false,
   },
-  harga: {
-    type: DataTypes.BIGINT,
-    allowNull: false,
-  },
-  deskripsi: {
-    type: DataTypes.TEXT,
-    allowNull: true,
-  },
-  lokasi: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   contact_person: {
     type: DataTypes.CHAR,
     unique: true,
@@ -30,6 +18,10 @@ module.exports = sequelize.define("produk", {
     validate: {
         len: 13,
     }
+  },
+  gambar: {
+    type: DataTypes.BLOB,
+    allowNull: false,
   }
 },
 {

@@ -24,6 +24,35 @@ module.exports = sequelize.define(
         key: "id",
       },
     },
+    body:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    thumbnail: {
+      type: DataTypes.BLOB,
+      allowNull: false,
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    lokasi: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    harga: {
+      type: DataTypes.BIGINT,
+      allowNull: false,
+    },
+    ukuran: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    kondisi: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     indexes: [
