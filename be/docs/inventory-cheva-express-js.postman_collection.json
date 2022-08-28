@@ -1101,17 +1101,17 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "zulfa",
+									"value": "admin",
 									"type": "text"
 								},
 								{
 									"key": "username",
-									"value": "zulfass",
+									"value": "admin",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "zulfa",
+									"value": "admin",
 									"type": "text"
 								}
 							]
@@ -2762,6 +2762,21 @@
 		},
 		{
 			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('success', function(){",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    postman.setEnvironmentVariable('token', jsonData.data.token);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -2781,12 +2796,12 @@
 					"formdata": [
 						{
 							"key": "username",
-							"value": "budis",
+							"value": "superadmin",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "zulfa",
+							"value": "superadmin123",
 							"type": "text"
 						}
 					]
