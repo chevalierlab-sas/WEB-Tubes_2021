@@ -5,7 +5,7 @@
 - <a href="https://github.com/jbuget/nodejs-clean-architecture-app/tree/add-complexe-use-case">https://github.com/jbuget/nodejs-clean-architecture-app/tree/add-complexe-use-case</a>
 
 
-## docs
+## Docs
 - lakukan import dbnya dulu di `docs/inventory.sql`
 - import documentation postman `docs/inventory-cheva-express-js.postman_collection.json`
 - check api spec di `docs/spec-api.json` dengan open api
