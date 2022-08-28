@@ -41,7 +41,12 @@ module.exports = class extends UserRepository {
     }
 
     async remove(userId) {
-        const seqUser = await this.model.findByPk(userId);
+        const seqUser = await this.model.findOne({
+            where: {
+                id: userId,
+                role: 'admin'
+            }
+        });
         if (seqUser) {
         return seqUser.destroy();
         }

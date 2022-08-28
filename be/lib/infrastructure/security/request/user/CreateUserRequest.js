@@ -29,7 +29,7 @@ module.exports = [
                 },
                 errorMessage: "username length min 1, max 100"
             },
-            isAlpha: true,
+            isalpha: true,
             custom: {
                 options: async (value, {req}) => {
                     const count = await UserModel.count({

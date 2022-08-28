@@ -19,6 +19,11 @@ module.exports = sequelize.define('users', {
         password: {
             type: DataTypes.STRING(240),
             allowNull: false
+        },
+        role: {
+            type: DataTypes.ENUM('super_admin', 'admin'),
+            defaultValue: "admin",
+            allowNull: true
         }
     }, {
       // options
