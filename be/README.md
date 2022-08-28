@@ -23,5 +23,9 @@
 ### launch server
 - `npm run start`
 
+## user default dengan role super admin
+- user: `superadmin`
+- pass: `superadmin123`
+
 
 ## belum ada unit testing
