@@ -2,7 +2,7 @@
 
 const UserRepository = require('../../domain/UserRepository')
 const Model = require('../database/orm/sequilize/models/index')
-const User = require('../../domain/User')
+const User = require('../../domain/User');
 
 module.exports = class extends UserRepository {
     constructor() {
@@ -15,7 +15,7 @@ module.exports = class extends UserRepository {
         const seqUser = await this.model.create({ name, username, password });
         await seqUser.save();
 
-        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
+        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password, seqUser.role);
     }
 
     async merge(userEntity) {
@@ -26,7 +26,7 @@ module.exports = class extends UserRepository {
         const { name, username } = userEntity;
         await seqUser.update({ name, username });
 
-        return new User(seqUser.id, seqUser.name, seqUser.username);
+        return new User(seqUser.id, seqUser.name, seqUser.username, null, seqUser.role);
     }
 
     async updatePassword(userEntity) {
@@ -37,7 +37,7 @@ module.exports = class extends UserRepository {
         const { password } = userEntity;
         await seqUser.update({ password });
 
-        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
+        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password, seqUser.role);
     }
 
     async remove(userId) {
@@ -56,18 +56,18 @@ module.exports = class extends UserRepository {
     async get(userId) {
         const seqUser = await this.model.findByPk(userId);
         if (!seqUser) return false;
-        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
+        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password, seqUser.role);
     }
 
     async getByUsername(username) {
         const seqUser = await this.model.findOne({ where: { username: username } });
-        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
+        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password, seqUser.role);
     }
 
     async find() {
         const seqUsers = await this.model.findAll();
         return seqUsers.map((seqUser) => {
-        return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password);
+            return new User(seqUser.id, seqUser.name, seqUser.username, seqUser.password, seqUser.role);
         });
     }
 };
